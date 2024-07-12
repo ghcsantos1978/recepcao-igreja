@@ -1,0 +1,44 @@
+<p-dialog (onHide)="fecharModal()"  [closable]="true" [(visible)]="exibirFilhoModal" [contentStyle]="{ 'overflow-y': 'visible' }" [style]="{width: '800px'}" header="Cadastro de Filhos" [modal]="true">
+  <form [formGroup]="form">
+      <div class="p-fluid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <label for="nome">Nome</label>
+            <input type="text"  pInputText id="nome" formControlName="nome" required />
+            <small class="p-error" *ngIf="!form!.controls.nome.hasError">Nome é requerido.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="name">Celular</label>
+          <input type="text"  pInputText id="celular" formControlName="celular" required autofocus />
+          <small class="p-error" *ngIf="!form!.controls.celular.hasError">Celular é requerido.</small>
+        </div>
+
+        <div class="p-field p-col-12 p-md-6">
+          <label for="restricoes">Restrições</label>
+          <p-multiSelect id="restricoes" formControlName="restricoes" [options]="listaRestricoes"
+              optionLabel="descricao" optionValue="id"
+              [ngClass]="invalidarCampo(form!, 'restricoes')" placeholder="Selecione"
+              [maxSelectedLabels]="3">
+          </p-multiSelect>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="alergias">Alergias</label>
+          <p-multiSelect id="alergias" formControlName="alergias" [options]="listaAlergias"
+              optionLabel="descricaoAlergia" optionValue="id"
+              [ngClass]="invalidarCampo(form!, 'alergias')" placeholder="Selecione"
+              [maxSelectedLabels]="3">
+          </p-multiSelect>
+          <small class="p-error" *ngIf="!form!.controls.alergias.hasError('required')">Alergias é requerido.</small>
+        </div>
+    </div>
+  </form>
+
+  <div class="p-fluid p-grid">
+    <div class="p-field p-col-12 p-md-6">
+      <p-button   label="Cancel" icon="pi pi-close" class="p-button-secondary" (click)="fecharModal()"></p-button>
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <p-button  label="Salvar" class="p-button-success" (click)="salvarFilho()"></p-button>
+    </div>
+  </div>
+
+</p-dialog>

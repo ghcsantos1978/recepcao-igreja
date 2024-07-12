@@ -1,0 +1,71 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="mb-6">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Adicionar Filho" icon="pi pi-plus" class="p-button-success mr-2" (click)="adicionarFilho()"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="filhosListagem" [rows]="10" [paginator]="true" [globalFilterFields]="['nome','celular']" responsiveLayout="scroll"
+        [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Cadastro de Filhos</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target!.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+                <th pSortableColumn="celular">Celular <p-sortIcon field="Celular"></p-sortIcon></th>
+                <th>Restrições</th>
+                <th>Alergias</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-filho>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="filho"></p-tableCheckbox>
+                </td>
+                <td>{{filho.nome}}</td>
+                <td>{{filho.celular}}</td>
+                <td>
+                  <p-dropdown id="restricoes" [options]="filho.restricoes"
+                    optionLabel="descricao" optionValue="id"
+                    [maxSelectedLabels]="3">
+                  </p-dropdown>
+                </td>
+                <td>
+                  <p-dropdown [options]="filho.alergias"
+                      optionLabel="descricaoAlergia" optionValue="id"
+                      [maxSelectedLabels]="3">
+                   </p-dropdown>
+                </td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar Filho" (click)="editarFilho(filho)"></button>
+                    <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir Filho" class="p-button-rounded p-button-warning  mr-2" (click)="excluirFilho(filho)"></button>
+                  </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                Existem {{filhosListagem ? filhosListagem.length : 0 }} filhos cadastrados
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+ <app-manter-filho [listaAlergias]="listaAlergias" [listaRestricoes]="listaRestricoes" [novoFilho]="incluirFilho" (salvarEvent)="salvarFilho($event)" (fecharModalEvent)="fecharModal()" *ngIf="exibirFilhoModal == true" [filhoEntity]="filhoSelecionado" [exibirFilhoModal]="exibirFilhoModal" ></app-manter-filho>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+

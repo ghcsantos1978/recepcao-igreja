@@ -1,0 +1,66 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="mb-6">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo Usuario" icon="pi pi-plus" class="p-button-success mr-2" (click)="novoUsuario()"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="usuarios" [rows]="10" [paginator]="true" [globalFilterFields]="['nome','telefone','cpf','estado']" responsiveLayout="scroll"
+        [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Cadastro de Usuários</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target!.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+                <th pSortableColumn="cpf">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
+                <th pSortableColumn="logradouro">Endereço <p-sortIcon field="logradouro"></p-sortIcon></th>
+                <th pSortableColumn="telefone">Telefone <p-sortIcon field="telefone"></p-sortIcon></th>
+                <th pSortableColumn="estado">Estado <p-sortIcon field="estado"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-usuario>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="usuario"></p-tableCheckbox>
+                </td>
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.cpf}}</td>
+                <td>{{usuario.logradouro}}</td>
+                <td>{{usuario.telefone}}</td>
+                <td>{{usuario.estado}}</td>
+                <td>{{usuario.email}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar usuário" (click)="editarUsuario(usuario)"></button>
+                    <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir usuário" class="p-button-rounded p-button-warning  mr-2" (click)="deletarUsuario(usuario)"></button>
+                    <button  style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-users" pTooltip="Incluir filhos" class="p-button-rounded p-button-warning  mr-2" (click)="adicionarFilhos(usuario)"></button>
+                  </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{usuarios ? usuarios.length : 0 }} usuários.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+ <app-manter-usuario [novoUsuario]="incluirUsuario" (salvarEvent)="salvarUsuario($event)" (fecharModalEvent)="fecharModal()" *ngIf="usuarioModal == true" [usuario]="usuarioSelecionado" [exibirModal]="usuarioModal" ></app-manter-usuario>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
