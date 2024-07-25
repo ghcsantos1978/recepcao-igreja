@@ -1,5 +1,5 @@
 export class RestricaoEntity {
-  id!: number;
+  id!: number | null;
   descricao!:string;
 
 }

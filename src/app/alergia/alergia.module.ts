@@ -5,14 +5,24 @@ import { AlergiaRoutingModule } from './alergia-routing.module';
 import { CadastroAlergiaComponent } from './cadastro-alergia/cadastro-alergia.component';
 import { CommonsModulesModule } from '../shared/modules/commons-modules/commons-modules.module';
 import { ManterAlergiaComponent } from './manter-alergia/manter-alergia.component';
+import { AlergiaService } from '../usuario/service/alergia.service';
 
 
 @NgModule({
   declarations: [CadastroAlergiaComponent, ManterAlergiaComponent],
   imports: [
-    CommonModule,
     AlergiaRoutingModule,
-    CommonsModulesModule
-  ]
+    CommonsModulesModule,
+    CommonModule
+  ],
+  exports:[
+    ManterAlergiaComponent,
+    CadastroAlergiaComponent,
+    CommonsModulesModule,CommonModule
+  ],
+  providers:[AlergiaService]
+
 })
 export class AlergiaModule { }
+
+

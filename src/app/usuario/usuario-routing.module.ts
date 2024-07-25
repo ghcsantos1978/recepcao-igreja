@@ -4,11 +4,7 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { CadastroFilhosComponent } from './cadastro-filhos/cadastro-filhos.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: CadastroUsuarioComponent,
-  }
-  ,
+
   {
     path: 'cadastro-usuario',
     component: CadastroUsuarioComponent,

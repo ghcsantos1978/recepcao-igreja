@@ -1,4 +1,4 @@
-<p-dialog (onHide)="fecharModal()"  [closable]="true" [(visible)]="exibirModal" [contentStyle]="{ 'overflow-y': 'visible' }" [style]="{width: '800px'}" header="Cadastro de Alergia" [modal]="true">
+<p-dialog (onHide)="fecharModal()"  [closable]="true" [(visible)]="exibirModal" [contentStyle]="{ 'overflow-y': 'visible' }" [style]="{width: '800px'}" header="Cadastro de Restrição" [modal]="true">
   <form [formGroup]="form">
       <div class="p-fluid p-grid">
         <div class="p-field p-col-12 p-md-12">
@@ -13,7 +13,7 @@
     <p-button   label="Cancel" icon="pi pi-close" class="p-button-secondary" (click)="fecharModal()"></p-button>
   </div>
   <div class="p-field p-col-12 p-md-6">
-    <p-button  label="Salvar" class="p-button-success" (click)="salvarAlergia()"></p-button>
+    <p-button  label="Salvar" class="p-button-success" (click)="salvarRestricao()"></p-button>
   </div>
 </div>
 

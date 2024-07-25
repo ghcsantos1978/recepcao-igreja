@@ -59,7 +59,7 @@
     </p-table>
 </div>
 
- <app-manter-usuario [novoUsuario]="incluirUsuario" (salvarEvent)="salvarUsuario($event)" (fecharModalEvent)="fecharModal()" *ngIf="usuarioModal == true" [usuario]="usuarioSelecionado" [exibirModal]="usuarioModal" ></app-manter-usuario>
+ <app-manter-usuario *ngIf="usuarioModal" [novoUsuario]="incluirUsuario" (salvarEvent)="salvarUsuario($event)" (fecharModalEvent)="fecharModal()"  [usuario]="usuarioSelecionado" [exibirModal]="usuarioModal" ></app-manter-usuario>
 
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

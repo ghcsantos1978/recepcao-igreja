@@ -64,7 +64,7 @@
     </p-table>
 </div>
 
- <app-manter-filho [listaAlergias]="listaAlergias" [listaRestricoes]="listaRestricoes" [novoFilho]="incluirFilho" (salvarEvent)="salvarFilho($event)" (fecharModalEvent)="fecharModal()" *ngIf="exibirFilhoModal == true" [filhoEntity]="filhoSelecionado" [exibirFilhoModal]="exibirFilhoModal" ></app-manter-filho>
+ <app-manter-filho *ngIf="exibirFilhoModal == true" [listaAlergias]="listaAlergias" [listaRestricoes]="listaRestricoes" [novoFilho]="novoFilho" (salvarEvent)="salvarFilho($event)" (fecharModalEvent)="fecharModal()" [filhoEntity]="filhoSelecionado" [exibirFilhoModal]="exibirFilhoModal" ></app-manter-filho>
 
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -41,10 +41,11 @@ import { FilhoService } from './service/filho.service';
     ManterFilhoComponent
   ],
   imports: [
+    CommonModule,
     UsuarioRoutingModule,
     CommonsModulesModule
   ],
-  exports:[
+  exports:[CommonModule,
     CadastroUsuarioComponent,
     ManterUsuarioComponent,
     CommonsModulesModule

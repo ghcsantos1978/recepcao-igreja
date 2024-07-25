@@ -28,8 +28,6 @@ export class ManterUsuarioComponent implements OnInit {
     }
 
     contruirForm() {
-      console.log("usuario modal");
-      console.log(JSON.stringify(this.usuario));
       this.form = this.formBuilder.group({
         id: [this.usuario?.id],
         nome: [this.usuario?.nome],

@@ -4,19 +4,18 @@
         <div class="p-field p-col-12 p-md-6">
             <label for="nome">Nome</label>
             <input type="text"  pInputText id="nome" formControlName="nome" required />
-            <small class="p-error" *ngIf="!form!.controls.nome.hasError">Nome é requerido.</small>
+            <!--<small class="p-error" *ngIf="!form!.controls.nome.hasError">Nome é requerido.</small>-->
         </div>
         <div class="p-field p-col-12 p-md-6">
           <label for="name">Celular</label>
           <input type="text"  pInputText id="celular" formControlName="celular" required autofocus />
-          <small class="p-error" *ngIf="!form!.controls.celular.hasError">Celular é requerido.</small>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
           <label for="restricoes">Restrições</label>
           <p-multiSelect id="restricoes" formControlName="restricoes" [options]="listaRestricoes"
               optionLabel="descricao" optionValue="id"
-              [ngClass]="invalidarCampo(form!, 'restricoes')" placeholder="Selecione"
+               placeholder="Selecione"
               [maxSelectedLabels]="3">
           </p-multiSelect>
         </div>
@@ -24,10 +23,9 @@
           <label for="alergias">Alergias</label>
           <p-multiSelect id="alergias" formControlName="alergias" [options]="listaAlergias"
               optionLabel="descricaoAlergia" optionValue="id"
-              [ngClass]="invalidarCampo(form!, 'alergias')" placeholder="Selecione"
+              placeholder="Selecione"
               [maxSelectedLabels]="3">
           </p-multiSelect>
-          <small class="p-error" *ngIf="!form!.controls.alergias.hasError('required')">Alergias é requerido.</small>
         </div>
     </div>
   </form>

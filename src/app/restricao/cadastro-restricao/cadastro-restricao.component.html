@@ -3,16 +3,16 @@
 <div class="card">
     <p-toolbar styleClass="mb-6">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="Nova Alergia" icon="pi pi-plus" class="p-button-success mr-2" (click)="novaAlergia()"></button>
+            <button pButton pRipple label="Nova Alergia" icon="pi pi-plus" class="p-button-success mr-2" (click)="incluirRestricao()"></button>
         </ng-template>
     </p-toolbar>
 
-    <p-table #dt [value]="alergias" [rows]="10" [paginator]="true" [globalFilterFields]="['id','descricao']" responsiveLayout="scroll"
+    <p-table #dt [value]="restricoes" [rows]="10" [paginator]="true" [globalFilterFields]="['id','descricao']" responsiveLayout="scroll"
         [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
-                <h5 class="m-0">Cadastro de Alergias</h5>
+                <h5 class="m-0">Cadastro de Restrições</h5>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target!.value, 'contains')" placeholder="Search..." />
@@ -21,36 +21,30 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th style="width: 3rem">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
                 <th pSortableColumn="id">Código <p-sortIcon field="id"></p-sortIcon></th>
                 <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon></th>
                 <th>Ações</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-alergia>
+        <ng-template pTemplate="body" let-restricao>
             <tr>
-                <td>
-                    <p-tableCheckbox [value]="alergia"></p-tableCheckbox>
-                </td>
                 <td>{{alergia.id}}</td>
-                <td>{{alergia.descricaoAlergia}}</td>
+                <td>{{alergia.descricao}}</td>
                 <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar Alergia" (click)="editarAlergia(alergia)"></button>
-                    <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir Alergia" class="p-button-rounded p-button-warning  mr-2" (click)="deletarAlergia(alergia)"></button>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar Alergia" (click)="editarRestricao(restricao)"></button>
+                    <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir Alergia" class="p-button-rounded p-button-warning  mr-2" (click)="deletarRestricao(restricao)"></button>
                   </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
             <div class="flex align-items-center justify-content-between">
-                Existem {{usuarios ? usuarios.length : 0 }} alergias cadastradas.
+                Existem {{restricoes ? restricoes.length : 0 }} restrições cadastradas.
             </div>
         </ng-template>
     </p-table>
 </div>
 
- <app-manter-alergia *ngIf="exibirModal == true" [novaAlergia]="incluirAlergia"  (salvarEvent)="salvarAlergia($event)" (fecharModalEvent)="fecharModal()"  [alergia]="alergiaSelecionada" [exibirModal]="exibirModal" ></app-manter-alergia>
+ <app-manter-alergia *ngIf="exibirModal == true" [novaRestricao]="novaRestricao"  (salvarEvent)="salvarRestricao($event)" (fecharModalEvent)="fecharModal()"  [restricao]="restricaoSelecionada" [exibirModal]="exibirModal" ></app-manter-alergia>
 
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

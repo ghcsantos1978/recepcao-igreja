@@ -31,8 +31,7 @@ import { TooltipModule } from 'primeng/tooltip';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    BrowserModule,
+
     TableModule,
     CalendarModule,
 		SliderModule,
@@ -62,8 +61,6 @@ import { TooltipModule } from 'primeng/tooltip';
     TooltipModule
   ],
   exports:[
-    CommonModule,
-    BrowserModule,
     TableModule,
     CalendarModule,
 		SliderModule,

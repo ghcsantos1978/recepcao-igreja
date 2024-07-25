@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlergiaEntity } from 'src/app/usuario/entity/alergia.entity';
-import { Usuario } from 'src/app/usuario/entity/usuario.entity';
 
 @Component({
   selector: 'app-manter-alergia',
@@ -24,9 +23,11 @@ export class ManterAlergiaComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
+    this.construirForm();
   }
 
   fecharModal(){
@@ -43,6 +44,13 @@ export class ManterAlergiaComponent implements OnInit {
     alergia.descricaoAlergia = this.form?.controls.descricao.value;
 
     this.salvarEvent.emit(alergia);
+  }
+
+  construirForm(){
+    this.form = this.formBuilder.group({
+      id: [this.alergia?.id],
+      descricao: [this.alergia?.descricaoAlergia],
+    });
   }
 
 }

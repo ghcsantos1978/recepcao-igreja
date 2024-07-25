@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CadastroAlergiaComponent } from './cadastro-alergia/cadastro-alergia.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: CadastroAlergiaComponent,
+  }
+  ,
+  {
+    path: 'cadastro-alergia',
+    component: CadastroAlergiaComponent,
+  },
 
 ];
 
@@ -10,3 +20,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AlergiaRoutingModule { }
+
+
