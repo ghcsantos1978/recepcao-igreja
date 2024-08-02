@@ -12,6 +12,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MenuComponent } from './menu/menu.component';
 import {MenuModule} from 'primeng/menu';
 import { RestricaoModule } from './restricao/restricao.module';
+import { MenuAppModule } from './menu/menu.app.module';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -28,11 +30,12 @@ import { RestricaoModule } from './restricao/restricao.module';
    RestricaoModule,
    BrowserAnimationsModule,
    AppRoutingModule,
+   MenuAppModule,
 
 
   ],
   exports:[CommonModule],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

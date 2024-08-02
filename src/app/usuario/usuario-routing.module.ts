@@ -6,16 +6,13 @@ import { CadastroFilhosComponent } from './cadastro-filhos/cadastro-filhos.compo
 const routes: Routes = [
 
   {
-    path: 'cadastro-usuario',
+    path: '',
     component: CadastroUsuarioComponent,
   },
-
   {
     path: 'cadastro-filhos/:usuarioId',
-    component: CadastroFilhosComponent,
-  },
-
-];
+    component: CadastroFilhosComponent
+  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

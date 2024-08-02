@@ -1,3 +1,4 @@
+
 <p-toast></p-toast>
 
 <div class="card">
@@ -13,7 +14,7 @@
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <h5 class="m-0">Cadastro de Usuários</h5>
-                <span class="p-input-icon-left">
+                <span style="width:30%!important" class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target!.value, 'contains')" placeholder="Search..." />
                 </span>

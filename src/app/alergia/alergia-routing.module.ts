@@ -6,11 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: CadastroAlergiaComponent,
-  }
-  ,
-  {
-    path: 'cadastro-alergia',
-    component: CadastroAlergiaComponent,
   },
 
 ];

@@ -13,14 +13,15 @@ export class CadastroRestricaoComponent implements OnInit {
   exibirModal: boolean = false;
   novaRestricao: boolean = false;
   restricaoSelecionada: RestricaoEntity = new RestricaoEntity();
+  id!: Number;
 
   constructor(private service: RestricaoService) { }
 
   ngOnInit(): void {
   }
 
-  salvarRestricao(restricao:RestricaoEntity){
-
+  async salvarRestricao(restricao:RestricaoEntity){
+    await this.service.salvar(restricao);
   }
 
   fecharModal(){

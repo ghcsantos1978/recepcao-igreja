@@ -31,6 +31,8 @@ import { UsuarioService } from './service/usuario.service';
 import { CadastroFilhosComponent } from './cadastro-filhos/cadastro-filhos.component';
 import { ManterFilhoComponent } from './cadastro-filhos/manter-filho/manter-filho.component';
 import { FilhoService } from './service/filho.service';
+import { MenuAppModule } from '../menu/menu.app.module';
+import { MenuComponent } from '../menu/menu.component';
 
 
 @NgModule({
@@ -43,12 +45,10 @@ import { FilhoService } from './service/filho.service';
   imports: [
     CommonModule,
     UsuarioRoutingModule,
-    CommonsModulesModule
+    CommonsModulesModule,
   ],
   exports:[CommonModule,
-    CadastroUsuarioComponent,
-    ManterUsuarioComponent,
-    CommonsModulesModule
+
   ],
   providers:[UsuarioService,FilhoService]
 

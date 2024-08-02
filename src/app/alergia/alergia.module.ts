@@ -18,7 +18,6 @@ import { AlergiaService } from '../usuario/service/alergia.service';
   exports:[
     ManterAlergiaComponent,
     CadastroAlergiaComponent,
-    CommonsModulesModule,CommonModule
   ],
   providers:[AlergiaService]
 

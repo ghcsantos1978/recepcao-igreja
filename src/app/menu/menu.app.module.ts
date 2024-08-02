@@ -14,6 +14,7 @@ import { UsuarioModule } from '../usuario/usuario.module';
     MenuRoutingModule,
     MenubarModule,
     UsuarioModule
-  ]
+  ],
+  exports:[MenuComponent]
 })
-export class MenuModule { }
+export class MenuAppModule { }
