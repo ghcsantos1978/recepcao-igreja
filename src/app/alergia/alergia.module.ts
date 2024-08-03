@@ -5,7 +5,7 @@ import { AlergiaRoutingModule } from './alergia-routing.module';
 import { CadastroAlergiaComponent } from './cadastro-alergia/cadastro-alergia.component';
 import { CommonsModulesModule } from '../shared/modules/commons-modules/commons-modules.module';
 import { ManterAlergiaComponent } from './manter-alergia/manter-alergia.component';
-import { AlergiaService } from '../usuario/service/alergia.service';
+import { AlergiaService } from './service/alergia.service';
 
 
 @NgModule({

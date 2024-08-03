@@ -1,5 +1,5 @@
 import { AlergiaEntity } from "./alergia.entity";
-import { RestricaoEntity } from "./restricao.entity";
+import { RestricaoEntity } from "../../restricao/entity/restricao.entity";
 
 export class FilhoEntity {
   id!: number | null;

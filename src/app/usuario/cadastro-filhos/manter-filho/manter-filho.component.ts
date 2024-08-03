@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } fro
 import { FilhoEntity } from '../../entity/filho.entity';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from '../../entity/usuario.entity';
-import { RestricaoEntity } from '../../entity/restricao.entity';
+import { RestricaoEntity } from '../../../restricao/entity/restricao.entity';
 import { FormBase } from 'src/app/shared/ui/form-base';
 import { AlergiaEntity } from '../../entity/alergia.entity';
 

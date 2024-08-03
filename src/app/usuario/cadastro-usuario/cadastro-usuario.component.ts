@@ -51,16 +51,22 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   async salvarUsuario(usuario: Usuario){
-     await this.service.salvarUsuario(usuario);
-     this.usuarioModal = false;
-     this.carregarListaUsuarios();
-     this.messageService.add({severity: 'success', summary:  'Cadastro', detail: 'Usuário cadastrado com sucesso!' })
+    if (this.incluirUsuario){
+      await this.service.salvarUsuario(usuario);
+    }
+    else{
+      await this.service.alterarUsuario(usuario);
+    }
+    this.usuarioModal = false;
+    this.carregarListaUsuarios();
+    this.messageService.add({severity: 'success', summary:  'Cadastro', detail: 'Usuário cadastrado com sucesso!' })
   }
 
   adicionarFilhos(usuario: Usuario){
     this.router.navigate([`/cadastro-filhos/${usuario.id}`]);
 
   }
+
 
 
 }

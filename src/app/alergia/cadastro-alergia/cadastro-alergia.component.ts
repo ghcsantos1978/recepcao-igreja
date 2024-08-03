@@ -1,4 +1,4 @@
-import { AlergiaService } from './../../usuario/service/alergia.service';
+import { AlergiaService } from '../service/alergia.service';
 import { Component, OnInit } from '@angular/core';
 import { AlergiaEntity } from 'src/app/usuario/entity/alergia.entity';
 

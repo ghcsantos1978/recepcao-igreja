@@ -3,9 +3,9 @@ import { FilhoEntity } from '../entity/filho.entity';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlergiaEntity } from '../entity/alergia.entity';
-import { RestricaoEntity } from '../entity/restricao.entity';
-import { AlergiaService } from '../service/alergia.service';
-import { RestricaoService } from '../service/restricao.service';
+import { RestricaoEntity } from '../../restricao/entity/restricao.entity';
+import { AlergiaService } from '../../alergia/service/alergia.service';
+import { RestricaoService } from 'src/app/restricao/service/restricao.service';
 
 @Component({
   selector: 'app-cadastro-filhos',

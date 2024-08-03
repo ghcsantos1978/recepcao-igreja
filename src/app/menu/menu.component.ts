@@ -22,14 +22,17 @@ export class MenuComponent implements OnInit {
           items:[
               {
                   label:'Usuários',
+                  routerLink:'/usuarios',
                   icon:'pi pi-fw pi-user-plus',
               },
               {
                   label:'Alergias',
+                  routerLink:'/alergias',
                   icon:'pi pi-fw pi-plus'
               },
               {
                   label:'Restrições',
+                  routerLink:'/restricoes',
                   icon:'pi pi-fw pi-plus'
               }
           ]

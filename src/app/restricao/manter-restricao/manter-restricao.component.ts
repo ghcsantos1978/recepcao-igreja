@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RestricaoEntity } from 'src/app/usuario/entity/restricao.entity';
+import { RestricaoEntity } from 'src/app/restricao/entity/restricao.entity';
 
 @Component({
   selector: 'app-manter-restricao',

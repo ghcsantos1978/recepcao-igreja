@@ -44,7 +44,7 @@
     </p-table>
 </div>
 
- <app-manter-alergia *ngIf="exibirModal == true" [novaRestricao]="novaRestricao"  (salvarEvent)="salvarRestricao($event)" (fecharModalEvent)="fecharModal()"  [restricao]="restricaoSelecionada" [exibirModal]="exibirModal" ></app-manter-alergia>
+ <app-manter-restricao *ngIf="exibirModal == true" [novaRestricao]="novaRestricao"  (salvarEvent)="salvarRestricao($event)" (fecharModalEvent)="fecharModal()"  [restricao]="restricaoSelecionada" [exibirModal]="exibirModal" ></app-manter-restricao>
 
 
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

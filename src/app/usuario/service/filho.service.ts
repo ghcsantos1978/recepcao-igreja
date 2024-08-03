@@ -13,25 +13,26 @@ export class FilhoService {
 
   URL_CADASTRO_FILHO = "/cadastro-filho";
 
+  constructor(private http: HttpClient) {
+
+  }
+
   deletarFilho(filho: FilhoEntity) : Promise<any> {
-    return this.http.delete(Constantes.URL_BASE_API_CADASTRO_USUARIO + this.URL_CADASTRO_FILHO + `/${filho.id}`).toPromise();
+    return this.http.delete(Constantes.URL_BASE_API + this.URL_CADASTRO_FILHO + `/${filho.id}`).toPromise();
   }
 
 
 
   salvarFilho(filho: FilhoEntity) : Promise<any> {
-    return this.http.post(Constantes.URL_BASE_API_CADASTRO_USUARIO + this.URL_CADASTRO_FILHO,filho).toPromise();
+    return this.http.post(Constantes.URL_BASE_API + this.URL_CADASTRO_FILHO,filho).toPromise();
   }
 
 
 
   carregarListaFilhos(responsavelId:number): Promise<FilhoEntity[]> {
-    console.log("url ",`http://localhost:8080${this.URL_CADASTRO_FILHO}/${responsavelId}`)
-    return this.http.get<FilhoEntity[]>(`http://localhost:8080${this.URL_CADASTRO_FILHO}/responsavel/${responsavelId}`).toPromise();
+    return this.http.get<FilhoEntity[]>(`${Constantes.URL_BASE_API}${this.URL_CADASTRO_FILHO}/responsavel/${responsavelId}`).toPromise();
   }
 
-  constructor(private http: HttpClient) {
 
-  }
 
 }

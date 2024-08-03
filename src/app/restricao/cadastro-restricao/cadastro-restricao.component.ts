@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestricaoEntity } from 'src/app/usuario/entity/restricao.entity';
-import { RestricaoService } from '../restricao.service';
+import { RestricaoEntity } from 'src/app/restricao/entity/restricao.entity';
+import { RestricaoService } from '../service/restricao.service';
 
 @Component({
   selector: 'app-cadastro-restricao',
@@ -18,6 +18,7 @@ export class CadastroRestricaoComponent implements OnInit {
   constructor(private service: RestricaoService) { }
 
   ngOnInit(): void {
+
   }
 
   async salvarRestricao(restricao:RestricaoEntity){
@@ -32,5 +33,11 @@ export class CadastroRestricaoComponent implements OnInit {
     this.novaRestricao = true;
     this.exibirModal = true;
   }
+
+
+  async carregarRestricoes(){
+    this.restricoes = await this.service.carregarRestricoes();
+  }
+
 
 }
