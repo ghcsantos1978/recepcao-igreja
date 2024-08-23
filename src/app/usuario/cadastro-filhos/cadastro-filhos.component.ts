@@ -6,6 +6,7 @@ import { AlergiaEntity } from '../entity/alergia.entity';
 import { RestricaoEntity } from '../../restricao/entity/restricao.entity';
 import { AlergiaService } from '../../alergia/service/alergia.service';
 import { RestricaoService } from 'src/app/restricao/service/restricao.service';
+import { MarcarPresencaDTO } from '../dto/marcar-presenca.dto';
 
 @Component({
   selector: 'app-cadastro-filhos',
@@ -21,6 +22,7 @@ export class CadastroFilhosComponent implements OnInit {
   usuarioId: number | null;
   listaAlergias: Array<AlergiaEntity> = new Array<AlergiaEntity>();
   listaRestricoes: Array<RestricaoEntity> = new Array<RestricaoEntity>();
+  filhosSelecionados: Array<FilhoEntity> = new Array<FilhoEntity>();
 
 
   constructor(private service: FilhoService,private activatedRoute: ActivatedRoute,private alergiaService: AlergiaService,
@@ -57,6 +59,19 @@ export class CadastroFilhosComponent implements OnInit {
   async excluirFilho(filho:FilhoEntity){
     await this.excluirFilho(filho);
   }
+
+  async marcarPresenca(){
+    let presencaDTO = new MarcarPresencaDTO();
+    let filhos = new Array<number>();
+    presencaDTO.idUsuario = this.usuarioId!
+    presencaDTO.dataPresenca = new Date();
+    for (const filho of this.filhosSelecionados){
+      filhos.push(filho.id!);
+    }
+    presencaDTO.filhos = filhos;
+    await this.service.marcarPresenca(presencaDTO);
+  }
+
 
   async salvarFilho(filho: FilhoEntity){
     this.setaAlergiasGravacao(filho);

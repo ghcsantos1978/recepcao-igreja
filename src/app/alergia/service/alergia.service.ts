@@ -12,7 +12,7 @@ import { AlergiaEntity } from "../../usuario/entity/alergia.entity";
 
 export class AlergiaService {
 
-  URL_CADASTRO_ALERGIA = "/cadastro-alergia";
+  URL_CADASTRO_ALERGIA = "/api/v1/cadastro-alergia";
 
   constructor(private http: HttpClient) {
 
@@ -22,8 +22,13 @@ export class AlergiaService {
     return this.http.delete(`${Constantes.URL_BASE_API} + ${this.URL_CADASTRO_ALERGIA} /${alergia.id}`).toPromise();
   }
 
-  salvarFilho(alergia: AlergiaEntity) : Promise<any> {
+  salvarAlergia(alergia: AlergiaEntity) : Promise<any> {
     return this.http.post(Constantes.URL_BASE_API + this.URL_CADASTRO_ALERGIA,alergia).toPromise();
+  }
+
+  alterarAlergia(alergia: AlergiaEntity) : Promise<any> {
+    console.log(Constantes.URL_BASE_API + this.URL_CADASTRO_ALERGIA + `/${alergia.id}`);
+    return this.http.put(Constantes.URL_BASE_API + this.URL_CADASTRO_ALERGIA + `/${alergia.id}`,alergia).toPromise();
   }
 
   carregarAlergias(): Promise<AlergiaEntity[]> {

@@ -10,10 +10,10 @@ export class RestricaoService {
 
   constructor(private http: HttpClient) { }
 
-  private URL_CADASTRO_RESTRICAO:string = "/cadastro-restricao";
+  private URL_CADASTRO_RESTRICAO:string = "/api/v1/cadastro-restricao";
 
   carregarRestricoes(): Promise<RestricaoEntity[]>  {
-    return this.http.get<RestricaoEntity[]>(Constantes.URL_BASE_API).toPromise();
+    return this.http.get<RestricaoEntity[]>(Constantes.URL_BASE_API + this.URL_CADASTRO_RESTRICAO).toPromise();
   }
 
   salvar(restricao: RestricaoEntity) : Promise<any> {
@@ -22,6 +22,9 @@ export class RestricaoService {
   }
 
 
+  alterar(restricao: RestricaoEntity) : Promise<any> {
+    return this.http.put(Constantes.URL_BASE_API +  this.URL_CADASTRO_RESTRICAO + `/${restricao.id}`,restricao).toPromise();
 
+  }
 
 }

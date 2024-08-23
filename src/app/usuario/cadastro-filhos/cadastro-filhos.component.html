@@ -1,14 +1,16 @@
 <p-toast></p-toast>
 
 <div class="card">
-    <p-toolbar styleClass="mb-6">
-        <ng-template pTemplate="left">
-            <button pButton pRipple label="Adicionar Filho" icon="pi pi-plus" class="p-button-success mr-2" (click)="adicionarFilho()"></button>
-        </ng-template>
+    <p-toolbar>
+        <div style="display: flex !important;justify-content: space-between !important;width: 30%;">
+            <button pButton pRipple label="Adicionar Filho" icon="pi pi-plus"  (click)="adicionarFilho()"></button>
+            <button style="background-color: green !important;" pButton pRipple label="Marcar Presença" icon="pi pi-check"  (click)="marcarPresenca()"></button>
+        </div>
     </p-toolbar>
 
     <p-table #dt [value]="filhosListagem" [rows]="10" [paginator]="true" [globalFilterFields]="['nome','celular']" responsiveLayout="scroll"
         [rowHover]="true" dataKey="id"
+        [(selection)]="filhosSelecionados"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
@@ -22,7 +24,7 @@
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 3rem">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    <p-tableHeaderCheckbox onclick="selecionarTodos()"></p-tableHeaderCheckbox>
                 </th>
                 <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
                 <th pSortableColumn="celular">Celular <p-sortIcon field="Celular"></p-sortIcon></th>
@@ -53,6 +55,8 @@
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" pTooltip="Editar Filho" (click)="editarFilho(filho)"></button>
                     <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir Filho" class="p-button-rounded p-button-warning  mr-2" (click)="excluirFilho(filho)"></button>
+                    <button style="margin-left: 0.8rem !important;" pButton pRipple icon="pi pi-trash" pTooltip="Excluir Filho" class="p-button-rounded p-button-warning  mr-2" (click)="marcarPresenca(filho)"></button>
+
                   </td>
             </tr>
         </ng-template>

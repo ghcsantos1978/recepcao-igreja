@@ -28,6 +28,9 @@ export class ManterUsuarioComponent implements OnInit {
     }
 
     contruirForm() {
+      if (this.novoUsuario){
+        this.usuario = new Usuario();
+      }
       this.form = this.formBuilder.group({
         id: [this.usuario?.id],
         nome: [this.usuario?.nome],
@@ -68,6 +71,7 @@ export class ManterUsuarioComponent implements OnInit {
       usuario.telefone = this.form?.controls.telefone.value;
       usuario.email = this.form?.controls.email.value;
       usuario.estado = this.form?.controls.estado.value;
+      usuario.cidade = this.form?.controls.cidade.value;
       this.salvarEvent.emit(usuario);
   }
 

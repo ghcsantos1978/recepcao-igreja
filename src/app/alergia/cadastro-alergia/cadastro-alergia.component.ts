@@ -21,8 +21,13 @@ export class CadastroAlergiaComponent implements OnInit {
   }
 
 
-  salvarAlergia(alergia: AlergiaEntity){
-
+  async salvarAlergia(alergia: AlergiaEntity){
+    if (this.incluirAlergia){
+      await this.service.salvarAlergia(alergia);
+    }
+    else{
+      await this.service.alterarAlergia(alergia);
+    }
   }
 
   fecharModal(){
@@ -30,12 +35,15 @@ export class CadastroAlergiaComponent implements OnInit {
   }
 
   editarAlergia(alergia: AlergiaEntity){
+    this.incluirAlergia = false;
     this.alergiaSelecionada = alergia;
     this.exibirModal = true;
+
   }
 
   novaAlergia(){
     this.exibirModal = true;
+    this.incluirAlergia = true;
 
   }
 

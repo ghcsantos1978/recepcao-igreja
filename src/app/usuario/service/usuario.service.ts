@@ -9,7 +9,7 @@ import Constantes from 'src/app/shared/constantes';
 
 export class UsuarioService {
 
-  URL_CADASTRO_USUARIO = "/cadastro-usuario";
+  URL_CADASTRO_USUARIO = "/api/v1/cadastro-usuario";
 
   constructor(private http: HttpClient) {
 

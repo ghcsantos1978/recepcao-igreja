@@ -22,7 +22,12 @@ export class CadastroRestricaoComponent implements OnInit {
   }
 
   async salvarRestricao(restricao:RestricaoEntity){
-    await this.service.salvar(restricao);
+    if (this.novaRestricao){
+      await this.service.salvar(restricao);
+    }
+    else{
+      await this.service.alterar(restricao);
+    }
   }
 
   fecharModal(){
